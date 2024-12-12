@@ -1,4 +1,4 @@
-namespace Cubitwelve.Src.Exceptions
+namespace UserService.Api.Exceptions
 {
     public class EntityDeletedException : Exception
     {
