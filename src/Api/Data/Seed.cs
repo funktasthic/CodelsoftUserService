@@ -69,6 +69,8 @@ namespace UserService.Api.Data
 
             usersList.ForEach(user =>
             {
+                user.HashedPassword = BCrypt.Net.BCrypt.HashPassword(user.HashedPassword);
+
                 user.CreatedAt = DateTime.UtcNow;
                 user.UpdatedAt = DateTime.UtcNow;
             });
