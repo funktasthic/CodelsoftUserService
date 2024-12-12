@@ -10,8 +10,8 @@ service UsersService {
     rpc GetProfile(Empty) returns (UserResponse){
         option (google.api.http) = {
           get: "/profile"
-        };
       };
+  };
 }
 
 // Models

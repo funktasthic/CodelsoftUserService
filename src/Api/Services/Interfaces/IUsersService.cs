@@ -5,6 +5,7 @@ namespace Api.Services.Interfaces
 {
     public interface IUsersService
     {
-        Task<UserResponse> GetProfile(Empty request, ServerCallContext context);
+        public Task<UserResponse> GetProfile(Empty request, ServerCallContext context);
+        public Task<UserResponse> GetByEmail(string email);
     }
 }

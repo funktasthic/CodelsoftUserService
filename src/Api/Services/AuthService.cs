@@ -2,8 +2,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Api.Services.Interfaces;
-using Cubitwelve.Src.Exceptions;
+using Grpc.Core;
 using Microsoft.IdentityModel.Tokens;
+using UserService.Api.Exceptions;
 using UserService.Api.Repositories.Interfaces;
 
 namespace Api.Services
@@ -13,27 +14,43 @@ namespace Api.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
         private readonly IMapperService _mapperService;
-        private readonly IHttpContextAccessor _ctxAccesor;
         private readonly string _jwtSecret;
 
         public AuthService(IUnitOfWork unitOfWork,
         IConfiguration configuration,
-        IMapperService mapperService,
-        IHttpContextAccessor ctxAccesor
+        IMapperService mapperService
         )
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
             _mapperService = mapperService;
-            _ctxAccesor = ctxAccesor;
             _jwtSecret = _configuration.GetSection("JwtSettings").GetValue<string>("Secret") ?? throw new InvalidJwtException("JWT_SECRET not found");
-
-            Console.WriteLine("jwt secret authservice: " + _jwtSecret);
         }
 
-        public string GetUserEmailInToken()
+        public string CreateToken(string email, string role)
         {
-            var httpUser = GetHttpUser();
+            var claims = new List<Claim>{
+                new (ClaimTypes.Email, email),
+                new (ClaimTypes.Role, role),
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddDays(60),
+                signingCredentials: creds
+            );
+
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            Console.WriteLine("TOKEN: " + jwt);
+            return jwt;
+        }
+
+        public string GetUserEmailInToken(ServerCallContext context)
+        {
+            var httpUser = GetHttpUser(context);
 
             //Get Claims from JWT
             var userEmail = httpUser.FindFirstValue(ClaimTypes.Email) ??
@@ -41,9 +58,9 @@ namespace Api.Services
             return userEmail;
         }
 
-        public string GetUserRoleInToken()
+        public string GetUserRoleInToken(ServerCallContext context)
         {
-            var httpUser = GetHttpUser();
+            var httpUser = GetHttpUser(context);
 
             //Get Claims from JWT
             var userRole = httpUser.FindFirstValue(ClaimTypes.Role) ??
@@ -51,11 +68,13 @@ namespace Api.Services
             return userRole;
         }
 
-        private ClaimsPrincipal GetHttpUser()
+        private ClaimsPrincipal GetHttpUser(ServerCallContext context)
         {
-            //Check if the HttpContext is available to work with
-            return (_ctxAccesor.HttpContext?.User) ??
-                throw new UnauthorizedAccessException();
+            var httpContext = context.GetHttpContext();
+            if (!httpContext.User.Identity?.IsAuthenticated ?? false)
+                throw new UnauthorizedAccessException("User not authenticated");
+
+            return httpContext.User;
         }
     }
 }

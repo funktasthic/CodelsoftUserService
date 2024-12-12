@@ -1,12 +1,12 @@
 using System.Text;
 using Api.Services;
 using Api.Services.Interfaces;
-using Cubitwelve.Src.Exceptions;
 using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using UserService.Api.Data;
+using UserService.Api.Exceptions;
 using UserService.Api.Repositories;
 using UserService.Api.Repositories.Interfaces;
 
@@ -24,7 +24,7 @@ namespace UserService.Api.Extensions
             AddServices(services);
             AddDbContext(services, config);
             AddUnitOfWork(services);
-            // AddAuthentication(services, config);
+            AddAuthentication(services, config);
             AddHttpContextAccesor(services);
         }
 
@@ -37,7 +37,6 @@ namespace UserService.Api.Extensions
         {
             services.AddScoped<IMapperService, MapperService>();
             services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IUsersService, UsersService>();
         }
 
         private static void AddDbContext(IServiceCollection services, IConfiguration config)
