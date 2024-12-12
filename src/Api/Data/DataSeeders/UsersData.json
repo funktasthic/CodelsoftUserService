@@ -1,5 +1,27 @@
 [
   {
+    "Name": "David",
+    "FirstLastName": "Araya",
+    "SecondLastName": "Nahum",
+    "RUT": "20545216-8",
+    "Email": "david.araya@alumnos.ucn.cl",
+    "HashedPassword": "david123",
+    "IsEnabled": true,
+    "CareerId": 1,
+    "RoleId": 1
+  },
+  {
+    "Name": "Pedro",
+    "FirstLastName": "Gonzalez",
+    "SecondLastName": "Perez",
+    "RUT": "12345678-9",
+    "Email": "user@example.com",
+    "HashedPassword": "fernandoteamo123",
+    "IsEnabled": true,
+    "CareerId": 1,
+    "RoleId": 1
+  },
+  {
     "Name": "Juan",
     "FirstLastName": "Pérez",
     "SecondLastName": "Gómez",
