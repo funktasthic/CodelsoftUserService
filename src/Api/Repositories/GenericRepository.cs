@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
-using Cubitwelve.Src.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using UserService.Api.Data;
+using UserService.Api.Exceptions;
 using UserService.Api.Models;
 using UserService.Api.Repositories.Interfaces;
 

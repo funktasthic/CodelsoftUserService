@@ -1,8 +1,8 @@
-using Cubitwelve.Src.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Authentication;
 using System.Text.Json;
 using UserService.Api.Common.Constants;
+using UserService.Api.Exceptions;
 
 
 namespace UserService.Api.Middlewares
