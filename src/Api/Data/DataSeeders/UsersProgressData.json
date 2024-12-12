@@ -1,0 +1,16 @@
+[
+  {
+    "UserId": 1,
+    "SubjectId": 2,
+    "CreatedAt": "2024-01-01T00:00:00Z",
+    "UpdatedAt": "2024-01-01T00:00:00Z",
+    "Version": 1
+  },
+  {
+    "UserId": 2,
+    "SubjectId": 3,
+    "CreatedAt": "2024-01-01T00:00:00Z",
+    "UpdatedAt": "2024-01-01T00:00:00Z",
+    "Version": 1
+  }
+]

@@ -1,0 +1,193 @@
+[
+  {
+    "SubjectCode": "MEC-001",
+    "PreSubjectCode": "IAF-001"
+  },
+  {
+    "SubjectCode": "MEC-001",
+    "PreSubjectCode": "CAL-001"
+  },
+  {
+    "SubjectCode": "CAL-002",
+    "PreSubjectCode": "CAL-001"
+  },
+  {
+    "SubjectCode": "ALG-002",
+    "PreSubjectCode": "ALG-001"
+  },
+  {
+    "SubjectCode": "PRG-001",
+    "PreSubjectCode": "ALG-001"
+  },
+  {
+    "SubjectCode": "PRG-001",
+    "PreSubjectCode": "PRI-001"
+  },
+  {
+    "SubjectCode": "ING-002",
+    "PreSubjectCode": "ING-001"
+  },
+
+  {
+    "SubjectCode": "ECD-001",
+    "PreSubjectCode": "CAL-002"
+  },
+  {
+    "SubjectCode": "ECD-001",
+    "PreSubjectCode": "ALG-002"
+  },
+  {
+    "SubjectCode": "CAL-003",
+    "PreSubjectCode": "CAL-002"
+  },
+  {
+    "SubjectCode": "POO-001",
+    "PreSubjectCode": "PRG-001"
+  },
+  {
+    "SubjectCode": "TPA-001",
+    "PreSubjectCode": "PRG-001"
+  },
+  {
+    "SubjectCode": "COE-002",
+    "PreSubjectCode": "COE-001"
+  },
+  {
+    "SubjectCode": "DFC-001",
+    "PreSubjectCode": "IUE-001"
+  },
+
+  {
+    "SubjectCode": "ELM-001",
+    "PreSubjectCode": "CAL-003"
+  },
+  {
+    "SubjectCode": "ELM-001",
+    "PreSubjectCode": "MEC-001"
+  },
+  {
+    "SubjectCode": "ELM-001",
+    "PreSubjectCode": "ALG-001"
+  },
+  {
+    "SubjectCode": "EST-001",
+    "PreSubjectCode": "CAL-002"
+  },
+  {
+    "SubjectCode": "EDD-001",
+    "PreSubjectCode": "POO-001"
+  },
+  {
+    "SubjectCode": "EDD-001",
+    "PreSubjectCode": "TPA-001"
+  },
+  {
+    "SubjectCode": "PDI-001",
+    "PreSubjectCode": "PII-001"
+  },
+
+  {
+    "SubjectCode": "ELT-001",
+    "PreSubjectCode": "ECD-001"
+  },
+  {
+    "SubjectCode": "ICD-001",
+    "PreSubjectCode": "EST-001"
+  },
+  {
+    "SubjectCode": "ICD-001",
+    "PreSubjectCode": "EDD-001"
+  },
+  {
+    "SubjectCode": "DSD-001",
+    "PreSubjectCode": "ALG-001"
+  },
+  {
+    "SubjectCode": "BDD-001",
+    "PreSubjectCode": "EDD-001"
+  },
+
+  {
+    "SubjectCode": "AOC-001",
+    "PreSubjectCode": "DSD-001"
+  },
+  {
+    "SubjectCode": "FDC-001",
+    "PreSubjectCode": "POO-001"
+  },
+  {
+    "SubjectCode": "FDC-001",
+    "PreSubjectCode": "TPA-001"
+  },
+  {
+    "SubjectCode": "IWM-001",
+    "PreSubjectCode": "BDD-001"
+  },
+  {
+    "SubjectCode": "ISW-001",
+    "PreSubjectCode": "EDD-001"
+  },
+  {
+    "SubjectCode": "PSW-001",
+    "PreSubjectCode": "PPA-001"
+  },
+
+  {
+    "SubjectCode": "SDI-001",
+    "PreSubjectCode": "BDD-001"
+  },
+  {
+    "SubjectCode": "LDP-001",
+    "PreSubjectCode": "EDD-001"
+  },
+  {
+    "SubjectCode": "DAA-001",
+    "PreSubjectCode": "FDC-001"
+  },
+  {
+    "SubjectCode": "SOP-001",
+    "PreSubjectCode": "AOC-001"
+  },
+  {
+    "SubjectCode": "DFC-002",
+    "PreSubjectCode": "DFC-001"
+  },
+  {
+    "SubjectCode": "PPF-001",
+    "PreSubjectCode": "PSW-001"
+  },
+
+  {
+    "SubjectCode": "SDI-002",
+    "PreSubjectCode": "SDI-001"
+  },
+  {
+    "SubjectCode": "GPT-001",
+    "PreSubjectCode": "SDI-001"
+  },
+  {
+    "SubjectCode": "ADS-001",
+    "PreSubjectCode": "SOP-001"
+  },
+  {
+    "SubjectCode": "RDC-001",
+    "PreSubjectCode": "SOP-001"
+  },
+  {
+    "SubjectCode": "EMP-001",
+    "PreSubjectCode": "DFC-002"
+  },
+  {
+    "SubjectCode": "PGT-001",
+    "PreSubjectCode": "PPF-001"
+  },
+
+  {
+    "SubjectCode": "EPT-001",
+    "PreSubjectCode": "GPT-001"
+  },
+  {
+    "SubjectCode": "EPT-001",
+    "PreSubjectCode": "SDI-002"
+  }
+]

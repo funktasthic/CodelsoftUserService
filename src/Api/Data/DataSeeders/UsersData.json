@@ -1,0 +1,112 @@
+[
+  {
+    "Name": "Juan",
+    "FirstLastName": "Pérez",
+    "SecondLastName": "Gómez",
+    "RUT": "12345678-9",
+    "Email": "juan.perez@example.com",
+    "HashedPassword": "hashedpassword1",
+    "IsEnabled": true,
+    "CareerId": 1,
+    "RoleId": 1
+  },
+  {
+    "Name": "María",
+    "FirstLastName": "López",
+    "SecondLastName": "Rodríguez",
+    "RUT": "98765432-1",
+    "Email": "maria.lopez@example.com",
+    "HashedPassword": "hashedpassword2",
+    "IsEnabled": true,
+    "CareerId": 2,
+    "RoleId": 1
+  },
+  {
+    "Name": "Carlos",
+    "FirstLastName": "Martínez",
+    "SecondLastName": "Núñez",
+    "RUT": "11223344-5",
+    "Email": "carlos.martinez@example.com",
+    "HashedPassword": "hashedpassword3",
+    "IsEnabled": true,
+    "CareerId": 3,
+    "RoleId": 1
+  },
+  {
+    "Name": "Ana",
+    "FirstLastName": "García",
+    "SecondLastName": "Fernández",
+    "RUT": "55667788-0",
+    "Email": "ana.garcia@example.com",
+    "HashedPassword": "hashedpassword4",
+    "IsEnabled": true,
+    "CareerId": 1,
+    "RoleId": 1
+  },
+  {
+    "Name": "Pedro",
+    "FirstLastName": "Sánchez",
+    "SecondLastName": "Díaz",
+    "RUT": "77889900-3",
+    "Email": "pedro.sanchez@example.com",
+    "HashedPassword": "hashedpassword5",
+    "IsEnabled": true,
+    "CareerId": 2,
+    "RoleId": 1
+  },
+  {
+    "Name": "Laura",
+    "FirstLastName": "Ramírez",
+    "SecondLastName": "Torres",
+    "RUT": "33445566-2",
+    "Email": "laura.ramirez@example.com",
+    "HashedPassword": "hashedpassword6",
+    "IsEnabled": true,
+    "CareerId": 3,
+    "RoleId": 1
+  },
+  {
+    "Name": "Jorge",
+    "FirstLastName": "Hernández",
+    "SecondLastName": "Vega",
+    "RUT": "12344321-4",
+    "Email": "jorge.hernandez@example.com",
+    "HashedPassword": "hashedpassword7",
+    "IsEnabled": true,
+    "CareerId": 1,
+    "RoleId": 1
+  },
+  {
+    "Name": "Sofía",
+    "FirstLastName": "Ortega",
+    "SecondLastName": "Navarro",
+    "RUT": "99887766-1",
+    "Email": "sofia.ortega@example.com",
+    "HashedPassword": "hashedpassword8",
+    "IsEnabled": true,
+    "CareerId": 2,
+    "RoleId": 1
+  },
+  {
+    "Name": "Daniel",
+    "FirstLastName": "Morales",
+    "SecondLastName": "Ríos",
+    "RUT": "55443322-9",
+    "Email": "daniel.morales@example.com",
+    "HashedPassword": "hashedpassword9",
+    "IsEnabled": true,
+    "CareerId": 3,
+    "RoleId": 1
+  },
+  {
+    "Name": "Camila",
+    "FirstLastName": "Fuentes",
+    "SecondLastName": "Gutiérrez",
+    "RUT": "10293847-6",
+    "Email": "camila.fuentes@example.com",
+    "HashedPassword": "hashedpassword10",
+    "IsEnabled": true,
+    "CareerId": 1,
+    "RoleId": 1
+  }
+]

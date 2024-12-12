@@ -1,0 +1,425 @@
+[
+  {
+    "code": "IAF-001",
+    "name": "Introducción a la física",
+    "department": "departamento de física",
+    "credits": 6,
+    "semester": 1
+  },
+  {
+    "code": "CAL-001",
+    "name": "Cálculo I",
+    "department": "departamento de matemática",
+    "credits": 6,
+    "semester": 1
+  },
+  {
+    "code": "ALG-001",
+    "name": "Álgebra I",
+    "department": "departamento de matemática",
+    "credits": 6,
+    "semester": 1
+  },
+  {
+    "code": "IUE-001",
+    "name": "Identidad, universidad, equidad y género",
+    "department": "Escuela de educación",
+    "credits": 2,
+    "semester": 1
+  },
+  {
+    "code": "ING-001",
+    "name": "Inglés I",
+    "department": "Dirección General de pregrado",
+    "credits": 4,
+    "semester": 1
+  },
+  {
+    "code": "FGE-001",
+    "name": "Formación general electiva",
+    "department": "Dirección General de pregrado",
+    "credits": 2,
+    "semester": 1
+  },
+  {
+    "code": "PII-001",
+    "name": "Proyecto Introducción a la ingeniería",
+    "department": "Facultad de Ingeniería y Ciencias Geológicas",
+    "credits": 5,
+    "semester": 1
+  },
+
+  {
+    "code": "MEC-001",
+    "name": "Mecánica",
+    "department": "departamento de física",
+    "credits": 6,
+    "semester": 2
+  },
+  {
+    "code": "CAL-002",
+    "name": "Cálculo II",
+    "department": "departamento de matemática",
+    "credits": 6,
+    "semester": 2
+  },
+  {
+    "code": "ALG-002",
+    "name": "Álgebra II",
+    "department": "departamento de matemática",
+    "credits": 6,
+    "semester": 2
+  },
+  {
+    "code": "PRG-001",
+    "name": "Programación",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 6,
+    "semester": 2
+  },
+  {
+    "code": "COE-001",
+    "name": "Comunicación efectiva I",
+    "department": "Escuela de educación",
+    "credits": 2,
+    "semester": 2
+  },
+  {
+    "code": "ING-002",
+    "name": "Inglés II",
+    "department": "Dirección General de pregrado",
+    "credits": 4,
+    "semester": 2
+  },
+
+  {
+    "code": "ECD-001",
+    "name": "Ecuaciones diferenciales",
+    "department": "departamento de matemática",
+    "credits": 5,
+    "semester": 3
+  },
+  {
+    "code": "CAL-003",
+    "name": "Cálculo III",
+    "department": "departamento de matemática",
+    "credits": 5,
+    "semester": 3
+  },
+  {
+    "code": "QMC-001",
+    "name": "Química general",
+    "department": "departamento de química",
+    "credits": 5,
+    "semester": 3
+  },
+  {
+    "code": "POO-001",
+    "name": "Programación orientada a objetos",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 3
+  },
+  {
+    "code": "TPA-001",
+    "name": "Técnicas y metodologías de programación avanzada",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 2,
+    "semester": 3
+  },
+  {
+    "code": "COE-002",
+    "name": "Comunicación efectiva II",
+    "department": "Escuela de educación",
+    "credits": 2,
+    "semester": 3
+  },
+  {
+    "code": "DFC-001",
+    "name": "Diálogo, fe y cultura",
+    "department": "Departamento de teología",
+    "credits": 2,
+    "semester": 3
+  },
+
+  {
+    "code": "ELM-001",
+    "name": "Electro Magnetismo",
+    "department": "departamento de física",
+    "credits": 6,
+    "semester": 4
+  },
+  {
+    "code": "EST-001",
+    "name": "Estadística",
+    "department": "departamento de matemática",
+    "credits": 6,
+    "semester": 4
+  },
+  {
+    "code": "IDS-001",
+    "name": "Ingeniería y desarrollo sustentable",
+    "department": "departamento de química",
+    "credits": 5,
+    "semester": 4
+  },
+  {
+    "code": "EPR-001",
+    "name": "Empren dimiento",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 3,
+    "semester": 4
+  },
+  {
+    "code": "EDD-001",
+    "name": "Estructuras de datos",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 4
+  },
+  {
+    "code": "PDI-001",
+    "name": "Proyecto diseño e innovación",
+    "department": "Departamento de Ingeniería Industrial",
+    "credits": 4,
+    "semester": 4
+  },
+
+  {
+    "code": "ELT-001",
+    "name": "Electrotecnia",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 5
+  },
+  {
+    "code": "ICD-001",
+    "name": "Introducción a Data Science",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 5
+  },
+  {
+    "code": "DSD-001",
+    "name": "Diseño de sistemas digitales",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 5
+  },
+  {
+    "code": "BDD-001",
+    "name": "Bases de datos",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 5
+  },
+  {
+    "code": "EPF-001",
+    "name": "Electivo profesional I",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 5
+  },
+  {
+    "code": "PPA-001",
+    "name": "Proyecto integrador programación avanzada",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 5
+  },
+
+  {
+    "code": "AOC-001",
+    "name": "Arquitectura y organización de computadores",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 6
+  },
+  {
+    "code": "FDC-001",
+    "name": "Fundamentos de la computación",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 6
+  },
+  {
+    "code": "IWM-001",
+    "name": "Introducción al desarrollo web/Móvil",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 6
+  },
+  {
+    "code": "ISW-001",
+    "name": "Ingeniería de software",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 6
+  },
+  {
+    "code": "EPF-002",
+    "name": "Electivo profesional II",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 6
+  },
+  {
+    "code": "PSW-001",
+    "name": "Proyecto Integrador software",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 6
+  },
+
+  {
+    "code": "SDI-001",
+    "name": "Sistemas de información I",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 7
+  },
+  {
+    "code": "LDP-001",
+    "name": "Lenguajes de programación",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 7
+  },
+  {
+    "code": "DAA-001",
+    "name": "Diseño y análisis de algoritmos",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 7
+  },
+  {
+    "code": "SOP-001",
+    "name": "Sistemas operativos",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 7
+  },
+
+  {
+    "code": "EPF-003",
+    "name": "Electivo profesional III",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 7
+  },
+  {
+    "code": "DFC-002",
+    "name": "Diálogo, fe y ciencia",
+    "department": "Departamento de teología",
+    "credits": 2,
+    "semester": 7
+  },
+  {
+    "code": "PPF-001",
+    "name": "Proyecto integrador plataformas",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 7
+  },
+
+  {
+    "code": "SDI-002",
+    "name": "Sistemas de información II",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 8
+  },
+  {
+    "code": "GPT-001",
+    "name": "Gestión de proyectos TI",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 8
+  },
+  {
+    "code": "ADS-001",
+    "name": "Arquitectura de sistemas",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 8
+  },
+  {
+    "code": "RDC-001",
+    "name": "Redes de computadores",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 8
+  },
+  {
+    "code": "EPF-004",
+    "name": "Electivo profesional IV",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 8
+  },
+  {
+    "code": "EMP-001",
+    "name": "Ética y moral profesional",
+    "department": "Departamento de teología",
+    "credits": 2,
+    "semester": 8
+  },
+  {
+    "code": "PGT-001",
+    "name": "Proyecto integrador gestión TI",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 8
+  },
+
+  {
+    "code": "EPT-001",
+    "name": "Evaluación de proyectos TI",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 9
+  },
+  {
+    "code": "EPF-005",
+    "name": "Electivo profesional V",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 9
+  },
+  {
+    "code": "EPF-006",
+    "name": "Electivo profesional VI",
+    "department": "departamento de ingeni   ería de sistemas y computación",
+    "credits": 5,
+    "semester": 9
+  },
+  {
+    "code": "EPF-007",
+    "name": "Electivo profesional VII",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 9
+  },
+  {
+    "code": "EPF-008",
+    "name": "Electivo profesional VIII",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 9
+  },
+  {
+    "code": "EPF-009",
+    "name": "Electivo profesional IX",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 5,
+    "semester": 9
+  },
+
+  {
+    "code": "CPP-001",
+    "name": "Capstone project",
+    "department": "departamento de ingeniería de sistemas y computación",
+    "credits": 30,
+    "semester": 10
+  }
+]
