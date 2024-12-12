@@ -1,4 +1,6 @@
 using AutoMapper;
+using UserProto;
+using UserService.Api.Models;
 
 namespace UserService.Api.Extensions
 {
@@ -6,6 +8,8 @@ namespace UserService.Api.Extensions
     {
         public MappingProfile()
         {
+            CreateMap<User, UserDto>();
+            CreateMap<Career, CareerDto>();
         }
     }
 }
