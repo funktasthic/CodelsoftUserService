@@ -7,7 +7,6 @@ namespace Api.Services.Interfaces
     {
         Task<UserResponse> GetProfile(Empty request, ServerCallContext context);
         Task<UpdateUserProfileResponse> UpdateProfile(UpdateUserProfileDto updateUserProfileDto, ServerCallContext context);
-        Task<UserProgressResponse> GetUserProgress(Empty request, ServerCallContext context);
         Task<UserDto> GetByEmail(string email);
     }
 }

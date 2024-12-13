@@ -81,7 +81,88 @@ namespace Api.Services
             }
         }
 
+        public override async Task<Empty> SetUserProgress(UpdateUserProgressDto subjects, ServerCallContext context)
+        {
+            try
+            {
+                var userId = await GetUserIdByToken(context);
+
+                var subjectsId = await MapAndValidateToSubjectId(subjects);
+                var subjectsToAdd = subjectsId.Item1;
+                var subjectsToDelete = subjectsId.Item2;
+
+                var userProgress = await _unitOfWork.UsersRepository.GetProgressByUser(userId) ?? new List<UserProgress>();
+
+                var progressToAdd = subjectsToAdd.Select(s =>
+                {
+                    var foundUserProgress = userProgress.FirstOrDefault(up => up.SubjectId == s);
+
+                    if (foundUserProgress != null)
+                        throw new DuplicateEntityException($"Subject with ID: {foundUserProgress.Subject.Code} already exists");
+
+                    return new UserProgress()
+                    {
+                        SubjectId = s,
+                        UserId = userId,
+                    };
+                }).ToList();
+
+                var progressToRemove = subjectsToDelete.Select(s =>
+                {
+                    if (userProgress.FirstOrDefault(up => up.SubjectId == s) == null)
+                        throw new EntityNotFoundException($"Subject with ID: {s} not found");
+
+                    return new UserProgress()
+                    {
+                        SubjectId = s,
+                        UserId = userId,
+                    };
+                }).ToList();
+
+                var addResult = await _unitOfWork.UsersRepository.AddProgress(progressToAdd);
+
+                var removeResult = await _unitOfWork.UsersRepository.RemoveProgress(progressToRemove, userId);
+
+                if (!addResult && !removeResult)
+                    throw new InternalErrorException("Cannot update user progress");
+
+                return new Empty();
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+                return new Empty();
+            }
+        }
+
+
         #region PRIVATE_METHODS
+
+        private async Task<Tuple<List<int>, List<int>>> MapAndValidateToSubjectId(UpdateUserProgressDto subjects)
+        {
+            var allSubjects = await _unitOfWork.SubjectsRepository.Get();
+            var subjectsToAdd = subjects.AddSubjects;
+            var subjectsToDelete = subjects.DeleteSubjects;
+
+            var mappedSubjectsToAdd = subjectsToAdd.Select(s =>
+            {
+                s = s.ToLower();
+                var foundSubject = allSubjects.FirstOrDefault(sub => sub.Code == s)
+                    ?? throw new EntityNotFoundException($"Subject with ID: {s} not found");
+                return foundSubject.Id;
+            }).ToList();
+
+            var mappedSubjectsToDelete = subjectsToDelete.Select(s =>
+            {
+                s = s.ToLower();
+                var foundSubject = allSubjects.FirstOrDefault(sub => sub.Code == s)
+                    ?? throw new EntityNotFoundException($"Subject with ID: {s} not found");
+                return foundSubject.Id;
+            }).ToList();
+
+            return new Tuple<List<int>, List<int>>(mappedSubjectsToAdd, mappedSubjectsToDelete);
+
+        }
 
         private async Task<UserDto> GetByEmail(string email)
         {
