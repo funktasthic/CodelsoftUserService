@@ -12,5 +12,26 @@
     "CreatedAt": "2024-01-01T00:00:00Z",
     "UpdatedAt": "2024-01-01T00:00:00Z",
     "Version": 1
+  },
+  {
+    "UserId": 2,
+    "SubjectId": 4,
+    "CreatedAt": "2024-01-02T00:00:00Z",
+    "UpdatedAt": "2024-01-02T00:00:00Z",
+    "Version": 1
+  },
+  {
+    "UserId": 2,
+    "SubjectId": 5,
+    "CreatedAt": "2024-01-03T00:00:00Z",
+    "UpdatedAt": "2024-01-03T00:00:00Z",
+    "Version": 1
+  },
+  {
+    "UserId": 2,
+    "SubjectId": 6,
+    "CreatedAt": "2024-01-04T00:00:00Z",
+    "UpdatedAt": "2024-01-04T00:00:00Z",
+    "Version": 1
   }
 ]
