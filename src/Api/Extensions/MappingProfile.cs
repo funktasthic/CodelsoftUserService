@@ -11,6 +11,7 @@ namespace UserService.Api.Extensions
             CreateMap<User, UserDto>();
             CreateMap<User, UpdateUserProfileDto>();
             CreateMap<Career, CareerDto>();
+            CreateMap<UserProgress, UserProgressDto>();
         }
     }
 }

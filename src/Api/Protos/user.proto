@@ -8,6 +8,8 @@ service UsersService {
   rpc GetProfile(Empty) returns (UserResponse){};
   // Update Profile
   rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){};
+
+  rpc GetUserProgress(Empty) returns (UserProgressResponse) {};
 }
 
 // Models
@@ -19,6 +21,11 @@ message UserDto {
     string rut = 5;
     string email = 6;
     CareerDto career = 7;
+}
+
+message UserProgressDto {
+    int32 id = 1;
+    string subjectCode = 2;
 }
 
 message UpdateUserProfileDto {
@@ -43,4 +50,8 @@ message UserResponse {
 
 message UpdateUserProfileResponse {
   UpdateUserProfileDto user = 1;
+}
+
+message UserProgressResponse {
+  repeated UserProgressDto userProgress = 1;
 }

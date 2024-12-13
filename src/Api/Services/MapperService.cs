@@ -1,5 +1,6 @@
 using Api.Services.Interfaces;
 using AutoMapper;
+using Google.Protobuf.Collections;
 
 namespace Api.Services
 {
@@ -10,6 +11,13 @@ namespace Api.Services
         public MapperService(IMapper mapper)
         {
             _mapper = mapper;
+        }
+
+        public RepeatedField<TDestination> ConvertToRepeatedField<TSource, TDestination>(List<TSource> sourceItems)
+        {
+            var mappedObjects = new RepeatedField<TDestination>();
+            mappedObjects.AddRange(sourceItems.Select(x => _mapper.Map<TDestination>(x)));
+            return mappedObjects;
         }
 
         public TDestination Map<TSource, TDestination>(TSource source)
