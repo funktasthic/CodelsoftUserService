@@ -2,16 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "UserProto";
 
-import "google/api/annotations.proto";
-
 // Endpoints
 service UsersService {
-    // Get Profile
-    rpc GetProfile(Empty) returns (UserResponse){
-        option (google.api.http) = {
-          get: "/profile"
-      };
-  };
+  // Get Profile
+  rpc GetProfile(Empty) returns (UserResponse){};
+  // Update Profile
+  rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){};
 }
 
 // Models
@@ -23,6 +19,12 @@ message UserDto {
     string rut = 5;
     string email = 6;
     CareerDto career = 7;
+}
+
+message UpdateUserProfileDto {
+    string name = 1;
+    string firstLastName = 2;
+    string secondLastName = 3;
 }
 
 message CareerDto {
@@ -37,4 +39,8 @@ message Empty {
 
 message UserResponse {
   UserDto user = 1;
+}
+
+message UpdateUserProfileResponse {
+  UpdateUserProfileDto user = 1;
 }

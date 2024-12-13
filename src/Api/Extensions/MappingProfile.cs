@@ -9,6 +9,7 @@ namespace UserService.Api.Extensions
         public MappingProfile()
         {
             CreateMap<User, UserDto>();
+            CreateMap<User, UpdateUserProfileDto>();
             CreateMap<Career, CareerDto>();
         }
     }

@@ -1,11 +1,13 @@
 using Grpc.Core;
+using System.Threading.Tasks;
 using UserProto;
 
 namespace Api.Services.Interfaces
 {
     public interface IUsersService
     {
-        public Task<UserResponse> GetProfile(Empty request, ServerCallContext context);
-        public Task<UserResponse> GetByEmail(string email);
+        Task<UserResponse> GetProfile(Empty request, ServerCallContext context);
+        Task<UpdateUserProfileResponse> UpdateProfile(UpdateUserProfileDto updateUserProfileDto, ServerCallContext context);
+        Task<UserDto> GetByEmail(string email);
     }
 }

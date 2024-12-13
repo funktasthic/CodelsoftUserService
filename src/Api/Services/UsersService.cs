@@ -7,7 +7,7 @@ using UserService.Api.Repositories.Interfaces;
 
 namespace Api.Services
 {
-    public class UsersService : UserProto.UsersService.UsersServiceBase
+    public class UsersService : UserProto.UsersService.UsersServiceBase, IUsersService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapperService _mapperService;
@@ -27,6 +27,25 @@ namespace Api.Services
             var response = new UserResponse();
             response.User = getByEmail;
             return response;
+        }
+
+        public override async Task<UpdateUserProfileResponse> UpdateProfile(UpdateUserProfileDto updateUserProfileDto, ServerCallContext context)
+        {
+            var userEmail = _authService.GetUserEmailInToken(context);
+            var user = await GetUserByEmail(userEmail);
+
+            user.Name = updateUserProfileDto.Name ?? user.Name;
+            user.FirstLastName = updateUserProfileDto.FirstLastName ?? user.FirstLastName;
+            user.SecondLastName = updateUserProfileDto.SecondLastName ?? user.SecondLastName;
+
+            var updatedUser = await _unitOfWork.UsersRepository.Update(user);
+
+            var updatedUserDto = _mapperService.Map<User, UpdateUserProfileDto>(updatedUser);
+
+            return new UpdateUserProfileResponse
+            {
+                User = updatedUserDto
+            };
         }
 
         #region PRIVATE_METHODS
