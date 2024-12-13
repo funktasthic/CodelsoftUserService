@@ -8,8 +8,10 @@ service UsersService {
   rpc GetProfile(Empty) returns (UserResponse){};
   // Update Profile
   rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){};
-
+  // Get User Progress
   rpc GetUserProgress(Empty) returns (UserProgressResponse) {};
+  // Update User Progress
+  rpc SetUserProgress(UpdateUserProgressDto) returns (Empty) {};
 }
 
 // Models
@@ -23,15 +25,20 @@ message UserDto {
     CareerDto career = 7;
 }
 
-message UserProgressDto {
-    int32 id = 1;
-    string subjectCode = 2;
-}
-
 message UpdateUserProfileDto {
     string name = 1;
     string firstLastName = 2;
     string secondLastName = 3;
+}
+
+message UserProgressDto {
+  int32 id = 1;
+  string subjectCode = 2;
+}
+
+message UpdateUserProgressDto{
+  repeated string addSubjects = 1;
+  repeated string deleteSubjects = 2;
 }
 
 message CareerDto {
@@ -40,9 +47,7 @@ message CareerDto {
 }
 
 // Responses 
-message Empty {
-
-}
+message Empty {}
 
 message UserResponse {
   UserDto user = 1;
