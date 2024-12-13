@@ -33,7 +33,7 @@ namespace Api.Services
             catch (Exception ex)
             {
                 HandleException(ex);
-                throw; // Esta línea no se alcanzará debido al `throw` dentro de `HandleException`
+                throw;
             }
         }
 
