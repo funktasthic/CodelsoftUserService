@@ -68,8 +68,6 @@ namespace UserService.Api.Extensions
         {
             var jwtSecret = config.GetSection("JwtSettings").GetValue<string>("Secret");
 
-            Console.WriteLine("JwtSecret: " + jwtSecret);
-
             if (string.IsNullOrEmpty(jwtSecret))
             {
                 throw new InvalidJwtException("JWT_SECRET not present in appsettings.json");

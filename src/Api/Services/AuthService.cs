@@ -44,7 +44,6 @@ namespace Api.Services
             );
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-            Console.WriteLine("TOKEN: " + jwt);
             return jwt;
         }
 
