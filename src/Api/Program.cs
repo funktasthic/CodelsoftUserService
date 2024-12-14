@@ -1,24 +1,45 @@
+
 using Api.Services;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using UserService.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddGrpc(options =>
+// Configurar Kestrel
+builder.WebHost.ConfigureKestrel(options =>
 {
-    options.EnableDetailedErrors = true;
+    // Puerto para HTTP con HTTP/1.1
+    options.ListenAnyIP(5003, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http1;
+    });
+
+    // Puerto para gRPC con HTTP/2
+    options.ListenAnyIP(5013, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http2;
+    });
 });
 
+// Agregar servicios para gRPC
+builder.Services.AddGrpc().AddJsonTranscoding();
+
+// Agregar servicios de aplicación (como tu UserAuthService, UsersService, etc.)
 builder.Services.AddApplicationServices(builder.Configuration);
 
-var app = builder.Build();
+builder.Services.AddOutputCache(options =>
+{
+    options.AddBasePolicy(builder => builder.Cache());
+});
 
+var app = builder.Build();
+app.UseOutputCache();
+
+// Seed de la base de datos
+AppSeedService.SeedDatabase(app);
+
+// Configurar el mapeo de servicios gRPC
 app.MapGrpcService<UserAuthService>();
 app.MapGrpcService<UsersService>();
-
-app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-
-// Database seeding
-AppSeedService.SeedDatabase(app);
 
 app.Run();

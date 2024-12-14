@@ -4,9 +4,19 @@ option csharp_namespace = "UserAuthProto";
 
 package UserAuth;
 
+import "google/api/annotations.proto";
+
 service UserAuthService {
-  rpc Register(RegisterStudentDto) returns (RegisterResponseDto){};
-  rpc UpdatePassword(UpdatePasswordDto) returns (Empty){};
+  rpc Register(RegisterStudentDto) returns (RegisterResponseDto){
+    option (google.api.http) = {
+      post: "/register"
+    };
+  };
+  rpc UpdatePassword(UpdatePasswordDto) returns (Empty){
+    option (google.api.http) = {
+      put: "/update-password"
+    };
+  };
 }
 
 message RegisterStudentDto {

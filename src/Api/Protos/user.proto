@@ -4,16 +4,34 @@ option csharp_namespace = "UserProto";
 
 package User;
 
+import "google/api/annotations.proto";
+
 // Endpoints
 service UsersService {
   // Get Profile
-  rpc GetProfile(Empty) returns (UserResponse){};
+  rpc GetProfile(Empty) returns (UserResponse){
+    option (google.api.http) = {
+      get: "/profile"
+    };
+  };
   // Update Profile
-  rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){};
+  rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){
+    option (google.api.http) = {
+      get: "/update-profile"
+    };
+  };
   // Get User Progress
-  rpc GetUserProgress(Empty) returns (UserProgressResponse) {};
+  rpc GetUserProgress(Empty) returns (UserProgressResponse) {
+    option (google.api.http) = {
+      get: "/my-progress"
+    };
+  };
   // Update User Progress
-  rpc SetUserProgress(UpdateUserProgressDto) returns (Empty) {};
+  rpc SetUserProgress(UpdateUserProgressDto) returns (Empty) {
+    option (google.api.http) = {
+      patch: "/my-progress"
+    };
+  };
 }
 
 // Models
