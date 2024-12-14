@@ -67,6 +67,8 @@ namespace Api.Services
             return userRole;
         }
 
+        #region PRIVATE_METHODS
+
         private ClaimsPrincipal GetHttpUser(ServerCallContext context)
         {
             var httpContext = context.GetHttpContext();
@@ -75,7 +77,9 @@ namespace Api.Services
 
             return httpContext.User;
         }
+
+        #endregion
     }
 }
 
-// TOKEN: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ1c2VyQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoic3R1ZGVudCIsImV4cCI6MTczNDE0MTYzMH0.UPWAJiJ1E8l1Zcapr84WIuRFhcE49MzDLGkR8c2rpzU
+// TOKEN: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJ1c2VyQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoic3R1ZGVudCIsImV4cCI6MTczNDM0OTM3Mn0.8JHmP0HlB8qm-9efu-LN3oZ7bbiHDVbTtqXPNDDWhb4

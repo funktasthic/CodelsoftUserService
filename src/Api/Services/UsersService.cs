@@ -8,7 +8,7 @@ using UserService.Api.Repositories.Interfaces;
 
 namespace Api.Services
 {
-    public class UsersService : UserProto.UsersService.UsersServiceBase
+    public class UsersService : UserProto.UsersService.UsersServiceBase, IUsersService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapperService _mapperService;
@@ -164,7 +164,7 @@ namespace Api.Services
 
         }
 
-        private async Task<UserDto> GetByEmail(string email)
+        public async Task<UserDto> GetByEmail(string email)
         {
             var user = await GetUserByEmail(email);
             return _mapperService.Map<User, UserDto>(user);

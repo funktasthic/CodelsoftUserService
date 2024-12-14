@@ -1,7 +1,6 @@
 using System.Text;
 using Api.Services;
 using Api.Services.Interfaces;
-using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,7 +18,6 @@ namespace UserService.Api.Extensions
             IConfiguration config
         )
         {
-            InitEnvironmentVariables();
             AddAutoMapper(services);
             AddServices(services);
             AddDbContext(services, config);
@@ -28,22 +26,16 @@ namespace UserService.Api.Extensions
             AddHttpContextAccesor(services);
         }
 
-        private static void InitEnvironmentVariables()
-        {
-            Env.Load();
-        }
-
         private static void AddServices(IServiceCollection services)
         {
             services.AddScoped<IMapperService, MapperService>();
             services.AddScoped<IAuthService, AuthService>();
         }
 
+
         private static void AddDbContext(IServiceCollection services, IConfiguration config)
         {
             var ConnectionString = config.GetConnectionString("Database");
-
-            Console.WriteLine("Connection string: " + ConnectionString);
 
             services.AddDbContext<DataContext>(opt =>
             {
