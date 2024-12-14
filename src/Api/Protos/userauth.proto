@@ -6,6 +6,7 @@ package UserAuth;
 
 service UserAuthService {
   rpc Register(RegisterStudentDto) returns (RegisterResponseDto){};
+  rpc UpdatePassword(UpdatePasswordDto) returns (Empty){};
 }
 
 message RegisterStudentDto {
@@ -28,6 +29,12 @@ message RegisterResponseDto {
   string role = 6;
   string career = 7;
   string token = 8;
+}
+
+message UpdatePasswordDto {
+  string currentPassword = 1;
+  string password = 2;
+  string repeatedPassword = 3;
 }
 
 // Responses 
