@@ -23,116 +23,84 @@ namespace Api.Services
 
         public override async Task<UserResponse> GetProfile(Empty request, ServerCallContext context)
         {
-            try
-            {
-                var userEmail = _authService.GetUserEmailInToken(context);
-                var getByEmail = await GetByEmail(userEmail);
-                var response = new UserResponse { User = getByEmail };
-                return response;
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex);
-                throw;
-            }
+            var userEmail = _authService.GetUserEmailInToken(context);
+            var getByEmail = await GetByEmail(userEmail);
+            var response = new UserResponse { User = getByEmail };
+            return response;
         }
 
         public override async Task<UpdateUserProfileResponse> UpdateProfile(UpdateUserProfileDto updateUserProfileDto, ServerCallContext context)
         {
-            try
-            {
-                var userEmail = _authService.GetUserEmailInToken(context);
-                var user = await GetUserByEmail(userEmail);
+            var userEmail = _authService.GetUserEmailInToken(context);
+            var user = await GetUserByEmail(userEmail);
 
-                user.Name = updateUserProfileDto.Name ?? user.Name;
-                user.FirstLastName = updateUserProfileDto.FirstLastName ?? user.FirstLastName;
-                user.SecondLastName = updateUserProfileDto.SecondLastName ?? user.SecondLastName;
+            user.Name = updateUserProfileDto.Name ?? user.Name;
+            user.FirstLastName = updateUserProfileDto.FirstLastName ?? user.FirstLastName;
+            user.SecondLastName = updateUserProfileDto.SecondLastName ?? user.SecondLastName;
 
-                var updatedUser = await _unitOfWork.UsersRepository.Update(user);
-                var updatedUserDto = _mapperService.Map<User, UpdateUserProfileDto>(updatedUser);
+            var updatedUser = await _unitOfWork.UsersRepository.Update(user);
+            var updatedUserDto = _mapperService.Map<User, UpdateUserProfileDto>(updatedUser);
 
-                return new UpdateUserProfileResponse { User = updatedUserDto };
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex);
-                throw;
-            }
+            return new UpdateUserProfileResponse { User = updatedUserDto };
         }
 
         public override async Task<UserProgressResponse> GetUserProgress(Empty request, ServerCallContext context)
         {
-            try
-            {
-                var userId = await GetUserIdByToken(context);
-                var userProgress = await _unitOfWork.UsersRepository.GetProgressByUser(userId);
+            var userId = await GetUserIdByToken(context);
+            var userProgress = await _unitOfWork.UsersRepository.GetProgressByUser(userId);
 
-                if (userProgress == null || !userProgress.Any())
-                    throw new EntityNotFoundException("No progress data found for the user.");
+            if (userProgress == null || !userProgress.Any())
+                throw new EntityNotFoundException("No progress data found for the user.");
 
-                var progressDtos = _mapperService.Map<IEnumerable<UserProgress>, RepeatedField<UserProgressDto>>(userProgress);
+            var progressDtos = _mapperService.Map<IEnumerable<UserProgress>, RepeatedField<UserProgressDto>>(userProgress);
 
-                return new UserProgressResponse { UserProgress = { progressDtos } };
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex);
-                throw;
-            }
+            return new UserProgressResponse { UserProgress = { progressDtos } };
         }
 
         public override async Task<Empty> SetUserProgress(UpdateUserProgressDto subjects, ServerCallContext context)
         {
-            try
+            var userId = await GetUserIdByToken(context);
+
+            var subjectsId = await MapAndValidateToSubjectId(subjects);
+            var subjectsToAdd = subjectsId.Item1;
+            var subjectsToDelete = subjectsId.Item2;
+
+            var userProgress = await _unitOfWork.UsersRepository.GetProgressByUser(userId) ?? new List<UserProgress>();
+
+            var progressToAdd = subjectsToAdd.Select(s =>
             {
-                var userId = await GetUserIdByToken(context);
+                var foundUserProgress = userProgress.FirstOrDefault(up => up.SubjectId == s);
 
-                var subjectsId = await MapAndValidateToSubjectId(subjects);
-                var subjectsToAdd = subjectsId.Item1;
-                var subjectsToDelete = subjectsId.Item2;
+                if (foundUserProgress != null)
+                    throw new DuplicateEntityException($"Subject with ID: {foundUserProgress.Subject.Code} already exists");
 
-                var userProgress = await _unitOfWork.UsersRepository.GetProgressByUser(userId) ?? new List<UserProgress>();
-
-                var progressToAdd = subjectsToAdd.Select(s =>
+                return new UserProgress()
                 {
-                    var foundUserProgress = userProgress.FirstOrDefault(up => up.SubjectId == s);
+                    SubjectId = s,
+                    UserId = userId,
+                };
+            }).ToList();
 
-                    if (foundUserProgress != null)
-                        throw new DuplicateEntityException($"Subject with ID: {foundUserProgress.Subject.Code} already exists");
-
-                    return new UserProgress()
-                    {
-                        SubjectId = s,
-                        UserId = userId,
-                    };
-                }).ToList();
-
-                var progressToRemove = subjectsToDelete.Select(s =>
-                {
-                    if (userProgress.FirstOrDefault(up => up.SubjectId == s) == null)
-                        throw new EntityNotFoundException($"Subject with ID: {s} not found");
-
-                    return new UserProgress()
-                    {
-                        SubjectId = s,
-                        UserId = userId,
-                    };
-                }).ToList();
-
-                var addResult = await _unitOfWork.UsersRepository.AddProgress(progressToAdd);
-
-                var removeResult = await _unitOfWork.UsersRepository.RemoveProgress(progressToRemove, userId);
-
-                if (!addResult && !removeResult)
-                    throw new InternalErrorException("Cannot update user progress");
-
-                return new Empty();
-            }
-            catch (Exception ex)
+            var progressToRemove = subjectsToDelete.Select(s =>
             {
-                HandleException(ex);
-                return new Empty();
-            }
+                if (userProgress.FirstOrDefault(up => up.SubjectId == s) == null)
+                    throw new EntityNotFoundException($"Subject with ID: {s} not found");
+
+                return new UserProgress()
+                {
+                    SubjectId = s,
+                    UserId = userId,
+                };
+            }).ToList();
+
+            var addResult = await _unitOfWork.UsersRepository.AddProgress(progressToAdd);
+
+            var removeResult = await _unitOfWork.UsersRepository.RemoveProgress(progressToRemove, userId);
+
+            if (!addResult && !removeResult)
+                throw new InternalErrorException("Cannot update user progress");
+
+            return new Empty();
         }
 
 
@@ -183,23 +151,6 @@ namespace Api.Services
             var user = await _unitOfWork.UsersRepository.GetByEmail(userEmail)
                         ?? throw new EntityNotFoundException("User not found");
             return user.Id;
-        }
-
-        #endregion
-
-        #region EXCEPTION_HANDLING
-
-        private void HandleException(Exception ex)
-        {
-            switch (ex)
-            {
-                case EntityNotFoundException:
-                    throw new RpcException(new Status(StatusCode.NotFound, ex.Message), ex.Message);
-                case UnauthorizedAccessException:
-                    throw new RpcException(new Status(StatusCode.Unauthenticated, ex.Message), ex.Message);
-                default:
-                    throw new RpcException(new Status(StatusCode.Internal, ex.Message), ex.Message);
-            }
         }
 
         #endregion
