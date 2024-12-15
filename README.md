@@ -11,6 +11,8 @@ The User Service API is a GRPC & Restful service designed to provide a robust pl
 - Update Profile: Allows the authenticated user to edit its profile, with the fields: Name, First Last Name and Second Last Name.
 - Get My-Progress: Allows the authenticated user to view its progress in the curricular matrix, with the fields: Id and Code of all subjects that the user has approved.
 - Update My-Progress: Allows the authenticated user to update its progress, with two lists: The first list is the code of the subjects that the user wants to mark as approved, and the second list is the code of the subjects that the user wants to remove from their approved subjects.
+- Register: Allows the authenticated user to create an account by providing the following fields: Name, First Last Name, Second Last Name, Rut, Email, Career Name, and Password. The system validates the provided information before creating the user profile.
+- Update Password: Allows the authenticated user to update their password. The user must provide the current password and the new password to successfully update it. The system ensures that the new password meets the required security criteria.
 
 ## Technologies
 
@@ -32,7 +34,7 @@ The User Service API is a GRPC & Restful service designed to provide a robust pl
    ```bash
    git clone https://github.com/funktasthic/CodelsoftUserService.git
    cd CodelsoftUserService
-   code. 
+   code .
    ```
 
 2. Configure the `appsettings.json` file with your PostgreSQL database details & add the JWT Secret key on it.
@@ -46,9 +48,9 @@ The User Service API is a GRPC & Restful service designed to provide a robust pl
 4. Create and apply Entity Framework Core migrations to set up the database:
 
    ```bash
-   dotnet ef database drop
+   dotnet ef database drop --project src/Api
    dotnet ef migrations add InitMigration --project src/Api --output-dir Data/Migrations
-   dotnet ef database update
+   dotnet ef database update --project src/Api
    ```
 
 5. Run the application locally:
