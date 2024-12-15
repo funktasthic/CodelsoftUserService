@@ -17,7 +17,7 @@ service UsersService {
   // Update Profile
   rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){
     option (google.api.http) = {
-      get: "/update-profile"
+      patch: "/update-profile"
     };
   };
   // Get User Progress

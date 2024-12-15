@@ -1,7 +1,8 @@
-
 using Api.Services;
+using MassTransit;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using UserService.Api.Extensions;
+using UserService.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,12 +25,32 @@ builder.WebHost.ConfigureKestrel(options =>
 // Agregar servicios para gRPC
 builder.Services.AddGrpc().AddJsonTranscoding();
 
-// Agregar servicios de aplicación (como tu UserAuthService, UsersService, etc.)
+// Agregar servicios de aplicaciÃ³n (como tu UserAuthService, UsersService, etc.)
 builder.Services.AddApplicationServices(builder.Configuration);
 
 builder.Services.AddOutputCache(options =>
 {
     options.AddBasePolicy(builder => builder.Cache());
+});
+
+
+// Configurar MassTransit a RabiitMQ
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        cfg.Send<User>(config =>
+        {
+            config.UseRoutingKeyFormatter(contextt => "user-queue");
+        });
+
+    });
 });
 
 var app = builder.Build();

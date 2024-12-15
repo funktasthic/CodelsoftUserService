@@ -6,6 +6,7 @@ using Grpc.Core;
 using UserService.Api.Models;
 using UserService.Api.Common.Constants;
 using System.Security.Authentication;
+using MassTransit;
 
 namespace Api.Services
 {
@@ -14,14 +15,17 @@ namespace Api.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapperService _mapperService;
         private readonly IAuthService _authService;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public UserAuthService(IUnitOfWork unitOfWork,
             IMapperService mapperService,
-            IAuthService authService)
+            IAuthService authService,
+            IPublishEndpoint publishEndpoint)
         {
             _authService = authService;
             _unitOfWork = unitOfWork;
             _mapperService = mapperService;
+            _publishEndpoint = publishEndpoint;
         }
 
         public override async Task<RegisterResponseDto> Register(RegisterStudentDto registerStudentDto, ServerCallContext context)
@@ -57,6 +61,9 @@ namespace Api.Services
             // Mapping the response
             var response = _mapperService.Map<User, RegisterResponseDto>(createdUser);
             response.Token = token;
+
+            // Publish the event
+            await _publishEndpoint.Publish(mappedUser.ToString() ?? string.Empty);
 
             return response;
         }

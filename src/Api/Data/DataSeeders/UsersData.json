@@ -22,17 +22,6 @@
     "RoleId": 1
   },
   {
-    "Name": "Juan",
-    "FirstLastName": "Pérez",
-    "SecondLastName": "Gómez",
-    "RUT": "12345678-9",
-    "Email": "juan.perez@example.com",
-    "HashedPassword": "hashedpassword1",
-    "IsEnabled": true,
-    "CareerId": 1,
-    "RoleId": 1
-  },
-  {
     "Name": "María",
     "FirstLastName": "López",
     "SecondLastName": "Rodríguez",

@@ -9,7 +9,8 @@ import "google/api/annotations.proto";
 service UserAuthService {
   rpc Register(RegisterStudentDto) returns (RegisterResponseDto){
     option (google.api.http) = {
-      post: "/register"
+      post: "/register",
+      body: "*"
     };
   };
   rpc UpdatePassword(UpdatePasswordDto) returns (Empty){
