@@ -17,7 +17,8 @@ service UsersService {
   // Update Profile
   rpc UpdateProfile(UpdateUserProfileDto) returns (UpdateUserProfileResponse){
     option (google.api.http) = {
-      patch: "/update-profile"
+      patch: "/update-profile",
+      body: "*" 
     };
   };
   // Get User Progress
@@ -29,7 +30,8 @@ service UsersService {
   // Update User Progress
   rpc SetUserProgress(UpdateUserProgressDto) returns (Empty) {
     option (google.api.http) = {
-      patch: "/my-progress"
+      patch: "/my-progress",
+      body: "*"
     };
   };
 }

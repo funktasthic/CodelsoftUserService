@@ -15,7 +15,8 @@ service UserAuthService {
   };
   rpc UpdatePassword(UpdatePasswordDto) returns (Empty){
     option (google.api.http) = {
-      put: "/update-password"
+      put: "/update-password",
+      body: "*"
     };
   };
 }
